@@ -75,7 +75,7 @@ Use pip to install the above.
 ### Run using podman
 
 1. Clone the repository
-2. Use the Dockerfile script in the development server to create the container image
+2. Use the Dockerfile script to create the container image
 
 ```
 podman build -t pathological-fractures .

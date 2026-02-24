@@ -169,12 +169,14 @@ python main.py
 
 * Ryan Howard - ML Scientist @ GOSH DRIVE (Core Contributor)
 * Sebin Sabu - Senior NLP Specialist @ GOSH DRIVE (Core Contributor & Technical Lead)
-* Dr. Pavithra Rajendran - NLP & Computer Vision Lead @ GOSH DRIVE (Project Lead)
+* Dr. Pavithra Rajendran - Machine Learning Lead @ GOSH DRIVE (Project Lead)
 
 ##  🤝 Acknowledgements
 * DRIVE engineering team
-* Alexander Chesover (Clinical Lead)
+* Dr.Alexander Chesover (Clinical Lead)
 * Nuwanthi Yapa Mahathanthila (QI Project Lead)
+
+For any queries, please contact us via email sebin.sabu@gosh.nhs.uk
 
 ## Citing & Authors
 

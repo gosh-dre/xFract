@@ -1,0 +1,10 @@
+matplotlib==3.9.4
+mlflow==3.0.0rc0
+pandas==2.3.3
+pytest==8.4.2
+PyYAML==6.0.3
+requests==2.32.5
+requests_kerberos==0.15.0
+torch==2.8.0
+tqdm==4.67.1
+transformers==4.56.2

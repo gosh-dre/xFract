@@ -1,0 +1,34 @@
+# Variables
+dataloader:
+  batch_size: 9
+
+# prompts
+prompts:
+  role_instruction_path: "prompts/role_instructions.json"
+  prompt_path: "prompts/prompt.json"
+  mlflow_role_instruction_path: "prompts:/qi_fracture_role_instructions/1"
+  mlflow_prompt_path: "prompts:/qi_fracture_prompt/6"
+  NLI_prompt_path: "prompts/NLI_prompt.json"
+  mlflow_NLI_prompt_path: "prompts:/qi_fracture_NLI_prompt/4"
+
+# logs
+logging:
+  level: "INFO" 
+  log_path: "logs/QI_pathological_fracture.log" 
+
+# outputs
+output: 
+  output_path: "/data/output"
+
+# input data
+input: 
+  input_path: "input/Data.csv"
+
+# model path in volume 
+model: 
+  model_path: "/data/medgemma4b"
+  NLI_model_path: "/data/MediPhi-Clinical"
+
+# MLflow path
+mlflow:
+  mlflow_server: "<ADD YOUR MLFLOW SERVER HERE>"

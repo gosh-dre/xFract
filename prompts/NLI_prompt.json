@@ -1,0 +1,6 @@
+{
+  "template_name": "QI_pathological_fractures_NLI_prompt",
+  "version": 4,
+  "description": "Prompt for running NLI inference to check the results of the NLP model output against the reports to verify effectiveness",
+  "prompt": "Please carefully and fairly base your selection on the comments below to determine whether the following Statement is true (entailment), undetermined (neutral) or false (contradiction) give the Context below. Provide a score to evidence your selection. \n\n    Context = \"{context}\"\n\n    Statement = \"{statement}\"\n\n    Please provide your response in JSON format without '''json'''. Please DO NOT provide ANY additional text or explanation. Include any quotes with escaped speech marks and avoid using double quotes.\n\n    Output Format: {{\"Answer\": (Entailment, Neutral, Contradiction), \"Score\": 50-100 , \"Rationale\": }}\n\n    "
+}

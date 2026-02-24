@@ -80,77 +80,24 @@ Use pip to install the above.
 ```
 podman build -t pathological-fractures .
 ```
-
-3. Create .tar image in dev server:
-```
-podman save -o pathological-fractures.tar localhost/pathological_fractures:latest
-```
-4. Create alpine image in dev server for copying models into the volume later 
-```
-podman pull docker.io/alpine:latest
-```
-5. Create .tar image for alpine in dev server
-```
-podman save -o alpine.tar docker.io/alpine:latest
-```
-4. scp files into staging server
-```
- scp {username}@{dev_server_IP}:~{path_to_tar_file} .
-```
-5. Load container image
+3. Load container image
 ```
 podman load -i pathological_fractures.tar
-```
-6. Load alpine image
-```
-podman load -i alpine.tar
 ```
 6. Create a named volume
 ```
 podman volume create pathological-fractures
 ```
-7. Copy models from drebulkstorage in staging 03 into your named volume
+7. Copy models from storage into your named volume and run podman container
 
 ```
 podman run --rm \
-  -v /drebulkstorage/babygrams/models/medgemma4b:/src/medgemma4b:ro \
-  -v /drebulkstorage/MediPhi-Clinical:/src/MediPhi-Clinical:ro \
-  -v pathological-fractures:/data \
-  alpine sh -c "cp -r /src/medgemma4b /data && cp -r /src/MediPhi-Clinical /data"
+  -v <path to models>:model\
+  -v pathological-fractures:/data 
 ```
 
 
 ### Usage
-
-**Environment variables**
-
-- ```MLFLOW_TRACKING_ENABLED```: When set to true will save all logs and outputs to mflow. When false, will save to a new numbered experiment folder in the outputs in the mounted volume
-
-### Opening  the container
-
-1. Setting ```MLFLOW_TRACKING_ENABLED=True``` with GPU available (IDEAL):
-
-```
-podman run --rm --network=host --device nvidia.com/gpu=all -v pathological-fractures:/data -e MLFLOW_TRACKING_ENABLED=true -it --entrypoint /bin/bash pathological-fractures
-```
-
-2. Setting ```MLFLOW_TRACKING_ENABLED=True``` with GPU unavailable:
-
-```
-podman run --rm --network=host -v pathological-fractures:/data -e MLFLOW_TRACKING_ENABLED=true -it --entrypoint /bin/bash pathological-fractures
-```
-3. Setting ```MLFLOW_TRACKING_ENABLED=False``` with GPU available:
-```
-podman run --rm --device nvidia.com/gpu=all -v pathological-fractures:/data -it --entrypoint /bin/bash pathological-fractures
-```
-4. Setting ```MLFLOW_TRACKING_ENABLED=False``` with GPU unavailable:
-```
-podman run --rm -v pathological-fractures:/data -it --entrypoint /bin/bash pathological-fractures
-```
-5. To use the API add this environmental variable to your run command after mounting the local volume:
-```
--e API_ENABLED=true
-```
 
 ### Running the container (Steps 1 and 2 for API use only):
 1. Enter username for API (OPTIONAL):
